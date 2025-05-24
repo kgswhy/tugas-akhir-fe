@@ -8,12 +8,16 @@ import { useSidebar } from "../context/SidebarContext";
 
 const navItems = [
   {
-    name: "History",
-    path: "/history",
+    name: "Users",
+    path: "/dashboard/users",
   },
   {
-    name: "List Customer",
-    path: "/list-customer",
+    name: "Activity",
+    path: "/dashboard/activity",
+  },
+  {
+    name: "Customers",
+    path: "/dashboard/customers",
   },
 ];
 

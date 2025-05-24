@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -9,6 +11,8 @@ import {
 
 import Badge from "../ui/badge/Badge";
 import Image from "next/image";
+import Button from "../ui/button/Button";
+import CustomerHistory from "./CustomerHistory";
 
 interface Order {
   id: number;
@@ -112,6 +116,20 @@ const tableData: Order[] = [
 ];
 
 export default function BasicTableOne() {
+  const [selectedCustomer, setSelectedCustomer] = useState<Order | null>(null);
+
+  const handleViewDetails = (customer: Order) => {
+    setSelectedCustomer(customer);
+  };
+
+  const handleBack = () => {
+    setSelectedCustomer(null);
+  };
+
+  if (selectedCustomer) {
+    return <CustomerHistory onBack={handleBack} />;
+  }
+
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
       <div className="max-w-full overflow-x-auto">
@@ -149,6 +167,12 @@ export default function BasicTableOne() {
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
                   Budget
+                </TableCell>
+                <TableCell
+                  isHeader
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Actions
                 </TableCell>
               </TableRow>
             </TableHeader>
@@ -205,8 +229,8 @@ export default function BasicTableOne() {
                         order.status === "Active"
                           ? "success"
                           : order.status === "Pending"
-                          ? "warning"
-                          : "error"
+                            ? "warning"
+                            : "error"
                       }
                     >
                       {order.status}
@@ -214,6 +238,11 @@ export default function BasicTableOne() {
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                     {order.budget}
+                  </TableCell>
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    <Button size="sm" variant="primary" onClick={() => handleViewDetails(order)}>
+                      View Details
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
