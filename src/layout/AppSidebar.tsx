@@ -8,12 +8,12 @@ import { useSidebar } from "../context/SidebarContext";
 
 const navItems = [
   {
-    name: "Users",
-    path: "/dashboard/users",
+    name: "Reminder",
+    path: "/dashboard/reminder",
   },
   {
-    name: "Activity",
-    path: "/dashboard/activity",
+    name: "Users",
+    path: "/dashboard/users",
   },
   {
     name: "Customers",
