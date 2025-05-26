@@ -35,6 +35,8 @@ export default function ReminderPage() {
     const [reminders, setReminders] = useState<Reminder[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [deactivatingIds, setDeactivatingIds] = useState<Set<number>>(new Set());
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [pagination, setPagination] = useState({
         page: 0,
         size: 2,
@@ -85,8 +87,47 @@ export default function ReminderPage() {
     };
 
     const handleDeactivateReminder = async (reminderId: number) => {
-        // This will be implemented later
-        console.log('Deactivate reminder:', reminderId);
+        try {
+            // Add reminderId to deactivating set
+            setDeactivatingIds(prev => new Set(prev).add(reminderId));
+            setError(null);
+            setSuccessMessage(null);
+
+            const response = await fetch(`/api/reminder/inactivate/${reminderId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const data = await response.json();
+
+            if (data.code === 'REM_002') {
+                // Success - refresh the reminders list
+                await fetchReminders(pagination.page);
+                setSuccessMessage(`Reminder "${data.data.title}" successfully inactivated`);
+                
+                // Clear success message after 3 seconds
+                setTimeout(() => setSuccessMessage(null), 3000);
+            } else if (data.code === 'AUT_001') {
+                // Handle expired token
+                deleteCookie('auth_token');
+                localStorage.removeItem('user_data');
+                router.push('/login');
+            } else {
+                setError(data.message || 'Failed to inactivate reminder');
+            }
+        } catch (error) {
+            console.error('Error inactivating reminder:', error);
+            setError('An error occurred while inactivating the reminder');
+        } finally {
+            // Remove reminderId from deactivating set
+            setDeactivatingIds(prev => {
+                const newSet = new Set(prev);
+                newSet.delete(reminderId);
+                return newSet;
+            });
+        }
     };
 
     return (
@@ -96,6 +137,12 @@ export default function ReminderPage() {
             {error && (
                 <div className="mb-4 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded relative" role="alert">
                     <span className="block sm:inline">{error}</span>
+                </div>
+            )}
+
+            {successMessage && (
+                <div className="mb-4 bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded relative" role="alert">
+                    <span className="block sm:inline">{successMessage}</span>
                 </div>
             )}
 
@@ -147,9 +194,9 @@ export default function ReminderPage() {
                                                         variant="outline"
                                                         size="sm"
                                                         onClick={() => handleDeactivateReminder(reminder.reminderId)}
-                                                        disabled={!reminder.isActive}
+                                                        disabled={!reminder.isActive || deactivatingIds.has(reminder.reminderId)}
                                                     >
-                                                        Deactivate
+                                                        {deactivatingIds.has(reminder.reminderId) ? 'Deactivating...' : 'Deactivate'}
                                                     </Button>
                                                 </td>
                                             </tr>
