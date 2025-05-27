@@ -158,6 +158,7 @@ export default function ReminderPage() {
                                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
                                     <thead>
                                         <tr>
+                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activity ID</th>
                                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
                                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
                                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Remind At</th>
@@ -171,6 +172,9 @@ export default function ReminderPage() {
                                                 key={reminder.reminderId}
                                                 className={reminder.isUrgent ? 'bg-red-50' : ''}
                                             >
+                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                    <div className="text-sm font-medium text-gray-900 dark:text-white/90">#{reminder.reminderId}</div>
+                                                </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="text-sm font-medium text-gray-900 dark:text-white/90">{reminder.title}</div>
                                                 </td>
