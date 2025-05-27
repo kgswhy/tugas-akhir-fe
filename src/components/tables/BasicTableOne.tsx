@@ -127,7 +127,7 @@ export default function BasicTableOne() {
   };
 
   if (selectedCustomer) {
-    return <CustomerHistory onBack={handleBack} />;
+    return <CustomerHistory customerId={selectedCustomer.id} onBack={handleBack} />;
   }
 
   return (
