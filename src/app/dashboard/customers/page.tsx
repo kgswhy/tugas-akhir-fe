@@ -6,6 +6,7 @@ import { deleteCookie } from 'cookies-next';
 import PageBreadcrumb from '@/components/common/PageBreadCrumb';
 import CustomersTable from '@/components/tables/CustomersTable';
 import CustomerHistory from '@/components/tables/CustomerHistory';
+import CreateCustomerForm from '@/components/forms/CreateCustomerForm';
 import Button from '@/components/ui/button/Button';
 
 interface Customer {
@@ -39,6 +40,7 @@ export default function CustomersPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
+    const [showCreateForm, setShowCreateForm] = useState(false);
     const [pagination, setPagination] = useState({
         page: 0,
         size: 2,
@@ -87,10 +89,17 @@ export default function CustomersPage() {
 
     const handleViewDetails = (customer: Customer) => {
         setSelectedCustomer(customer);
+        setShowCreateForm(false);
     };
 
     const handleBackToList = () => {
         setSelectedCustomer(null);
+        setShowCreateForm(false);
+    };
+
+    const handleCreateSuccess = () => {
+        setShowCreateForm(false);
+        fetchCustomers(pagination.page); // Refresh the current page
     };
 
     return (
@@ -109,6 +118,8 @@ export default function CustomersPage() {
                         <div className="flex justify-center items-center h-64">
                             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
                         </div>
+                    ) : showCreateForm ? (
+                        <CreateCustomerForm onBack={handleBackToList} onSuccess={handleCreateSuccess} />
                     ) : selectedCustomer ? (
                         <CustomerHistory 
                             customerId={selectedCustomer.customerId} 
@@ -116,6 +127,15 @@ export default function CustomersPage() {
                         />
                     ) : (
                         <>
+                            <div className="mb-6 flex justify-end">
+                                <Button
+                                    variant="primary"
+                                    onClick={() => setShowCreateForm(true)}
+                                >
+                                    Create Customer
+                                </Button>
+                            </div>
+
                             <CustomersTable customers={customers} onViewDetails={handleViewDetails} />
 
                             {/* Pagination */}

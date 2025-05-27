@@ -154,9 +154,9 @@ export default function ReminderPage() {
                         </div>
                     ) : (
                         <>
-                            <div className="overflow-x-auto">
-                                <table className="min-w-full divide-y divide-gray-200">
-                                    <thead className="bg-gray-50">
+                            <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-600">
+                                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+                                    <thead>
                                         <tr>
                                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
                                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
@@ -165,20 +165,20 @@ export default function ReminderPage() {
                                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="bg-white divide-y divide-gray-200">
+                                    <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
                                         {reminders.map((reminder) => (
                                             <tr 
                                                 key={reminder.reminderId}
                                                 className={reminder.isUrgent ? 'bg-red-50' : ''}
                                             >
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm font-medium text-gray-900">{reminder.title}</div>
+                                                    <div className="text-sm font-medium text-gray-900 dark:text-white/90">{reminder.title}</div>
                                                 </td>
                                                 <td className="px-6 py-4">
-                                                    <div className="text-sm text-gray-900">{reminder.description}</div>
+                                                    <div className="text-sm text-gray-900 dark:text-white/90">{reminder.description}</div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm text-gray-900">
+                                                    <div className="text-sm text-gray-900 dark:text-white/90">
                                                         {new Date(reminder.remindAt).toLocaleString()}
                                                     </div>
                                                 </td>

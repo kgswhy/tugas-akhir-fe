@@ -135,31 +135,31 @@ export default function CustomerHistory({ customerId, onBack }: CustomerHistoryP
             </div>
 
             {customerDetails && (
-                <div className="mb-8 bg-white rounded-lg shadow p-6">
+                <div className="mb-8 bg-white dark:border-white/[0.05] dark:bg-white/[0.03] rounded-lg shadow p-6 dark:text-white">
                     <h2 className="text-2xl font-semibold mb-4">Customer Details</h2>
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <p className="text-gray-600">Name</p>
+                            <p className="text-gray-500">Name</p>
                             <p className="font-medium">{customerDetails.name}</p>
                         </div>
                         <div>
-                            <p className="text-gray-600">Email</p>
+                            <p className="text-gray-500">Email</p>
                             <p className="font-medium">{customerDetails.email}</p>
                         </div>
                         <div>
-                            <p className="text-gray-600">Phone</p>
+                            <p className="text-gray-500">Phone</p>
                             <p className="font-medium">{customerDetails.phone}</p>
                         </div>
                         <div>
-                            <p className="text-gray-600">Date of Birth</p>
+                            <p className="text-gray-500">Date of Birth</p>
                             <p className="font-medium">{new Date(customerDetails.dateOfBirth).toLocaleDateString()}</p>
                         </div>
                         <div className="col-span-2">
-                            <p className="text-gray-600">Address</p>
+                            <p className="text-gray-500">Address</p>
                             <p className="font-medium">{customerDetails.address}</p>
                         </div>
                         <div className="col-span-2">
-                            <p className="text-gray-600">Details</p>
+                            <p className="text-gray-500">Details</p>
                             <p className="font-medium">{customerDetails.detail}</p>
                         </div>
                     </div>

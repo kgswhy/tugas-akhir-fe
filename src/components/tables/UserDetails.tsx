@@ -78,7 +78,7 @@ export default function UserDetails({ user, onBack }: UserDetailsProps) {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow p-6">
+    <div className="dark:border-white/[0.05] dark:bg-white/[0.03]rounded-lg shadow p-6">
       <div className="mb-6">
         <Button
           variant="outline"
@@ -88,7 +88,7 @@ export default function UserDetails({ user, onBack }: UserDetailsProps) {
           ← Back to Users List
         </Button>
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-semibold text-gray-800">User Details</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 dark:text-white/90">User Details</h2>
           <div className="space-x-4">
             <Button
               variant="outline"
@@ -141,26 +141,26 @@ export default function UserDetails({ user, onBack }: UserDetailsProps) {
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-500">User ID</label>
-            <p className="mt-1 text-gray-900">{user.userId}</p>
+            <p className="mt-1 text-gray-900 dark:text-white">{user.userId}</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-500">Merchant ID</label>
-            <p className="mt-1 text-gray-900">{user.merchantId}</p>
+            <p className="mt-1 text-gray-900 dark:text-white">{user.merchantId}</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-500">Name</label>
-            <p className="mt-1 text-gray-900">{user.name}</p>
+            <p className="mt-1 text-gray-900 dark:text-white">{user.name}</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-500">Email</label>
-            <p className="mt-1 text-gray-900">{user.email}</p>
+            <p className="mt-1 text-gray-900 dark:text-white">{user.email}</p>
           </div>
         </div>
 
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-500">Phone</label>
-            <p className="mt-1 text-gray-900">{user.phone}</p>
+            <p className="mt-1 text-gray-900 dark:text-white">{user.phone}</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-500">Level</label>
@@ -168,11 +168,11 @@ export default function UserDetails({ user, onBack }: UserDetailsProps) {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-500">Created Date</label>
-            <p className="mt-1 text-gray-900">{new Date(user.createdDate).toLocaleDateString()}</p>
+            <p className="mt-1 text-gray-900 dark:text-white">{new Date(user.createdDate).toLocaleDateString()}</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-500">Last Updated</label>
-            <p className="mt-1 text-gray-900">{new Date(user.updatedDate).toLocaleDateString()}</p>
+            <p className="mt-1 text-gray-900 dark:text-white">{new Date(user.updatedDate).toLocaleDateString()}</p>
           </div>
         </div>
       </div>

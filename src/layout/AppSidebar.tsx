@@ -84,12 +84,12 @@ const AppSidebar: React.FC = () => {
             {item.path === "/dashboard/reminder" && hasUrgentReminders && (
               <>
                 {/* Dot for expanded state */}
-                <span className={`absolute ${!isExpanded && !isHovered ? "hidden" : "block"} right-4 top-2 flex h-2 w-2`}>
+                <span className={`absolute ${!isExpanded && !isHovered ? "hidden" : "block"} right-2 top-2 flex h-2 w-2`}>
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
                 </span>
                 {/* Dot for collapsed state */}
-                <span className={`absolute ${!isExpanded && !isHovered ? "block" : "hidden"} right-2 top-2 flex h-2 w-2`}>
+                <span className={`absolute ${!isExpanded && !isHovered ? "block" : "hidden"} right-2 top-1 flex h-2 w-2`}>
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
                 </span>
