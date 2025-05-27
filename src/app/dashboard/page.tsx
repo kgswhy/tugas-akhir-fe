@@ -119,44 +119,44 @@ export default function Dashboard() {
           </div>
 
           {/* Recent Activity Section */}
-          <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] sm:p-6">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-              Recent Activity
-            </h3>
-            <div className="mt-4">
-              {loading ? (
-                <div className="flex justify-center items-center h-32">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-600"></div>
-                </div>
-              ) : (
-                <p className="text-gray-500 dark:text-gray-400">
-                  No recent activity
-                </p>
-              )}
-            </div>
-          </div>
+          {/*<div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] sm:p-6">*/}
+          {/*  <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">*/}
+          {/*    Recent Activity*/}
+          {/*  </h3>*/}
+          {/*  <div className="mt-4">*/}
+          {/*    {loading ? (*/}
+          {/*      <div className="flex justify-center items-center h-32">*/}
+          {/*        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-600"></div>*/}
+          {/*      </div>*/}
+          {/*    ) : (*/}
+          {/*      <p className="text-gray-500 dark:text-gray-400">*/}
+          {/*        No recent activity*/}
+          {/*      </p>*/}
+          {/*    )}*/}
+          {/*  </div>*/}
+          {/*</div>*/}
         </div>
 
         {/* Right Column - Side Content */}
-        <div className="col-span-12 xl:col-span-5">
-          {/* Quick Stats */}
-          <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] sm:p-6">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-              Quick Stats
-            </h3>
-            <div className="mt-4 space-y-4">
-              {/* Add your stats here */}
-              <div className="flex items-center justify-between">
-                <span className="text-gray-500 dark:text-gray-400">Active Users</span>
-                <span className="font-medium text-gray-800 dark:text-white/90">245</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-500 dark:text-gray-400">Total Revenue</span>
-                <span className="font-medium text-gray-800 dark:text-white/90">$12,345</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/*<div className="col-span-12 xl:col-span-5">*/}
+        {/*  /!* Quick Stats *!/*/}
+        {/*  <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] sm:p-6">*/}
+        {/*    <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">*/}
+        {/*      Quick Stats*/}
+        {/*    </h3>*/}
+        {/*    <div className="mt-4 space-y-4">*/}
+        {/*      /!* Add your stats here *!/*/}
+        {/*      <div className="flex items-center justify-between">*/}
+        {/*        <span className="text-gray-500 dark:text-gray-400">Active Users</span>*/}
+        {/*        <span className="font-medium text-gray-800 dark:text-white/90">245</span>*/}
+        {/*      </div>*/}
+        {/*      <div className="flex items-center justify-between">*/}
+        {/*        <span className="text-gray-500 dark:text-gray-400">Total Revenue</span>*/}
+        {/*        <span className="font-medium text-gray-800 dark:text-white/90">$12,345</span>*/}
+        {/*      </div>*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
       </div>
     </div>
   );
