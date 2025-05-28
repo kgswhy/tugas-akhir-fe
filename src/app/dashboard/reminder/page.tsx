@@ -170,7 +170,7 @@ export default function ReminderPage() {
                                         {reminders.map((reminder) => (
                                             <tr 
                                                 key={reminder.reminderId}
-                                                className={reminder.isUrgent ? 'bg-red-50' : ''}
+                                                className={reminder.isUrgent ? 'bg-red-50 dark:bg-red-900/30' : ''}
                                             >
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="text-sm font-medium text-gray-900 dark:text-white/90">#{reminder.reminderId}</div>
