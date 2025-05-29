@@ -52,7 +52,7 @@ export default function CustomersPage() {
     const fetchCustomers = async (page: number = 0) => {
         try {
             setLoading(true);
-            const response = await fetch(`/api/customer/list?page=${page}&size=${pagination.size}&identityId=10002`);
+            const response = await fetch(`/api/customer/list?page=${page}&size=${pagination.size}`);
             const data: CustomerListResponse = await response.json();
 
             if (data.code === '00' && data.data) {
