@@ -42,7 +42,7 @@ const AppSidebar: React.FC = () => {
       >
         <Link href="/">
           {isExpanded || isHovered || isMobileOpen ? (
-            <>
+            <div className="flex items-center gap-3">
               <Image
                 src="/images/logo/logo-icon.svg"
                 alt="Logo"
@@ -52,7 +52,7 @@ const AppSidebar: React.FC = () => {
               <h1 className="text-2xl font-bold">
                 TailAdmin
               </h1>
-            </>
+            </div>
           ) : (
             <Image
               src="/images/logo/logo-icon.svg"
