@@ -30,11 +30,14 @@ export default function ChangePasswordForm({ userId, onBack }: ChangePasswordFor
 
         try {
             const response = await fetch(`/api/user/${userId}/change-password`, {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    oldPassword: formData.currentPassword,
+                    newPassword: formData.newPassword,
+                }),
             });
 
             const data = await response.json();
