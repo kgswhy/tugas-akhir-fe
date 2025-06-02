@@ -18,10 +18,9 @@ export async function GET(request: Request) {
         const { searchParams } = new URL(request.url);
         const page = searchParams.get('page') || '0';
         const size = searchParams.get('size') || '2';
-        const identityId = searchParams.get('identityId');
 
         const response = await fetch(
-            `${process.env.NEXT_PUBLIC_HOST_URL}/customer/list?page=${page}&size=${size}&identityId=${identityId}`,
+            `${process.env.NEXT_PUBLIC_HOST_URL}/customer/list?page=${page}&size=${size}`,
             {
                 headers: {
                     'userId': userId.toString(),
